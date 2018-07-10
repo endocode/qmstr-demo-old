@@ -1,0 +1,23 @@
+diff --git a/build.gradle b/build.gradle
+index 8674409..60383cb 100644
+--- a/build.gradle
++++ b/build.gradle
+@@ -1,10 +1,12 @@
+ // Top-level build file where you can add configuration options common to all sub-projects/modules.
+ buildscript {
+     repositories {
++        mavenLocal()
+         jcenter()
+     }
+     dependencies {
+         classpath 'com.android.tools.build:gradle:2.3.3'
++        classpath "org.qmstr.gradle:qmstr-plugin:0.1"
+     }
+ }
+ 
+@@ -12,4 +14,5 @@ allprojects {
+     repositories {
+         jcenter()
+     }
++    apply plugin: 'qmstr'
+ }

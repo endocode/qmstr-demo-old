@@ -1,0 +1,38 @@
+From 2df3312792c25b0349f4f78b611f0d7ae3f53fea Mon Sep 17 00:00:00 2001
+From: Markus Herpich <markus@endocode.com>
+Date: Tue, 11 Jun 2019 11:52:41 +0200
+Subject: [PATCH] Apply qmstr
+
+---
+ build.gradle | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/build.gradle b/build.gradle
+index 0fe6cda9..5f625947 100644
+--- a/build.gradle
++++ b/build.gradle
+@@ -2,6 +2,7 @@
+ 
+ buildscript {
+     repositories {
++        mavenLocal()
+         jcenter()
+         maven {
+             url "https://maven.google.com"
+@@ -12,6 +13,7 @@ buildscript {
+         classpath 'com.android.tools.build:gradle:3.3.1'
+         classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.6'
+         classpath 'com.github.dcendents:android-maven-gradle-plugin:1.5'
++        classpath 'org.qmstr:gradle-plugin:0.4'
+ 
+         // NOTE: Do not place your application dependencies here; they belong
+         // in the individual module build.gradle files
+@@ -34,4 +36,5 @@ allprojects {
+ 
+ 
+     apply plugin: 'checkstyle'
++    apply plugin: 'qmstr'
+ }
+-- 
+2.17.1
+

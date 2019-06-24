@@ -17,14 +17,18 @@ setup_git_src https://github.com/google/blockly-android.git master blockly-andro
 
 pushd blockly-android
 echo "Applying qmstr plugin to gradle build configuration"
-#git am < ${DEMOWD}/add-qmstr.patch
+git reset --hard origin/master
+git am < ${DEMOWD}/0001-Apply-qmstr.patch
 popd
 
 echo "Waiting for qmstr-master server"
 eval $(qmstrctl start --wait --verbose)
 
 echo "[INFO] Start gradle build"
+qmstrctl spawn qmstr/android-blocklydemo ./gradlew tasks
 qmstrctl spawn qmstr/android-blocklydemo ./gradlew build
+exit
+
 
 echo "[INFO] Build finished. Creating snapshot and triggering analysis."
 qmstrctl snapshot -O postbuild-snapshot.tar -f

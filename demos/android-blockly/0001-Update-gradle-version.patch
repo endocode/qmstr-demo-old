@@ -1,0 +1,36 @@
+From 7fd37e8d48b955c23316c46b2ec7d9c01e3f1f05 Mon Sep 17 00:00:00 2001
+From: Markus Herpich <markus@endocode.com>
+Date: Mon, 1 Jul 2019 11:58:51 +0200
+Subject: [PATCH] Update gradle version
+
+---
+ build.gradle                             | 2 +-
+ gradle/wrapper/gradle-wrapper.properties | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/build.gradle b/build.gradle
+index 5f625947..23878a8a 100644
+--- a/build.gradle
++++ b/build.gradle
+@@ -10,7 +10,7 @@ buildscript {
+         google()
+     }
+     dependencies {
+-        classpath 'com.android.tools.build:gradle:3.3.1'
++        classpath 'com.android.tools.build:gradle:3.4.1'
+         classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.6'
+         classpath 'com.github.dcendents:android-maven-gradle-plugin:1.5'
+         classpath 'org.qmstr:gradle-plugin:0.4'
+diff --git a/gradle/wrapper/gradle-wrapper.properties b/gradle/wrapper/gradle-wrapper.properties
+index b020a3d1..0c45891b 100644
+--- a/gradle/wrapper/gradle-wrapper.properties
++++ b/gradle/wrapper/gradle-wrapper.properties
+@@ -3,4 +3,4 @@ distributionBase=GRADLE_USER_HOME
+ distributionPath=wrapper/dists
+ zipStoreBase=GRADLE_USER_HOME
+ zipStorePath=wrapper/dists
+-distributionUrl=https\://services.gradle.org/distributions/gradle-4.10.1-all.zip
++distributionUrl=https\://services.gradle.org/distributions/gradle-5.1.1-all.zip
+-- 
+2.17.1
+

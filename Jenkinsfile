@@ -28,7 +28,14 @@ pipeline {
         stage('Build master and client images') {
             steps {
                 dir("qmstr-master"){
-                    sh 'make democontainer'
+                    script {
+                        sh 'make democontainer'
+                        def mastername = sh(script: 'docker create qmstr/master', returnStdout: true)
+                        mastername = mastername.trim()
+                        sh "docker cp ${mastername}:/usr/local/bin/qmstr ${qmstrbin}/"
+                        sh "docker cp ${mastername}:/usr/local/bin/qmstrctl ${qmstrbin}/"
+                        sh "docker rm ${mastername}"
+                    }
                 }
             }
         }
@@ -41,10 +48,10 @@ pipeline {
                         }
                     }
                 }
-                stage('compile calc'){
+                stage('compile openssl'){
                     steps{
                         dir("qmstr-demo"){
-                            sh 'make calc'
+                            sh 'make openssl'
                         }
                     }
                 }

@@ -32,8 +32,8 @@ pipeline {
                         sh 'make democontainer'
                         def mastername = sh(script: 'docker create qmstr/master', returnStdout: true)
                         mastername = mastername.trim()
-                        sh "docker cp ${mastername}:/usr/local/bin/qmstr ${qmstrbin}/"
-                        sh "docker cp ${mastername}:/usr/local/bin/qmstrctl ${qmstrbin}/"
+                        sh "docker cp ${mastername}:/usr/local/bin/qmstr /tmp/qmstr"
+                        sh "docker cp ${mastername}:/usr/local/bin/qmstrctl /tmp/qmstrctl"
                         sh "docker rm ${mastername}"
                     }
                 }

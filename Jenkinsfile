@@ -26,14 +26,15 @@ pipeline {
             }
         }
         stage('Build master and client images') {
+        // FIXME: sudo is a bad idea
             steps {
                 dir("qmstr-master"){
                     script {
                         sh 'make democontainer'
                         def mastername = sh(script: 'docker create qmstr/master', returnStdout: true)
                         mastername = mastername.trim()
-                        sh "docker cp ${mastername}:/usr/local/bin/qmstr /tmp/qmstr"
-                        sh "docker cp ${mastername}:/usr/local/bin/qmstrctl /tmp/qmstrctl"
+                        sh "sudo docker cp ${mastername}:/usr/local/bin/qmstr /usr/local/bin/qmstr"
+                        sh "sudo docker cp ${mastername}:/usr/local/bin/qmstrctl /usr/local/bin/qmstrctl"
                         sh "docker rm ${mastername}"
                     }
                 }

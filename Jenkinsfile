@@ -29,11 +29,6 @@ pipeline {
             steps {
                 dir("qmstr-master"){
                     sh 'make democontainer'
-                    mastername = sh(script: 'docker create qmstr/master', returnStdout: true)
-                    mastername = mastername.trim()
-                    sh "docker cp ${mastername}:/usr/local/bin/qmstr /tmp/qmstr"
-                    sh "docker cp ${mastername}:/usr/local/bin/qmstrctl /tmp/qmstrctl"
-                    sh "docker rm ${mastername}"
                 }
             }
         }
@@ -46,7 +41,7 @@ pipeline {
                         }
                     }
                 }
-                stage('compile curl'){
+                stage('compile calc'){
                     steps{
                         dir("qmstr-demo"){
                             sh 'make calc'

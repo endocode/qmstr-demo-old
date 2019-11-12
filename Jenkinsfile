@@ -1,5 +1,6 @@
 pipeline {
-    agent any
+    agent { label 'golang' }
+    // fixme: this is wrong - the makefile requires golang for some reason. That should not be necessary when building in containers
 
     environment {
         MASTER_CONTAINER_NAME="qmstr-demo-master_${BUILD_NUMBER}"

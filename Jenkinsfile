@@ -18,9 +18,8 @@ pipeline {
                     agent { label 'docker' }
 
                     steps {
-                        copyArtifacts(projectName: 'QMSTR/qmstr/development')
+                        copyArtifacts(projectName: 'QMSTR/qmstr/master')
                         sh "make curl"
-                       
                     }
                 }
 
@@ -33,8 +32,36 @@ pipeline {
                     }
 
                     steps {
-                        copyArtifacts(projectName: 'QMSTR/qmstr/development')
+                        copyArtifacts(projectName: 'QMSTR/qmstr/master')
                         sh "make openssl"
+                    }
+                }
+
+                stage('compile flask'){
+
+                    agent { label 'docker' }
+
+                    environment {
+                        PATH = "$PATH:$WORKSPACE/out/"
+                    }
+
+                    steps {
+                        copyArtifacts(projectName: 'QMSTR/qmstr/master')
+                        sh "make flask"
+                    }
+                }
+
+                stage('compile guava'){
+
+                    agent { label 'docker' }
+
+                    environment {
+                        PATH = "$PATH:$WORKSPACE/out/"
+                    }
+
+                    steps {
+                        copyArtifacts(projectName: 'QMSTR/qmstr/master')
+                        sh "make guava"
                     }
                 }
             }

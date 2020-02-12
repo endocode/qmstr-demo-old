@@ -13,6 +13,7 @@ demos/curl/curl
 demos/jsonc/jsonc
 demos/openssl/openssl
 demos/java-jabref/jabref
+demos/java-guava/guava
 demos/java-android-blockly/blockly-android
 demos/icecream/icecream
 demos/debian-curl/curl/
@@ -24,3 +25,5 @@ demos/python-pillow/Pillow
 **/ana.yaml
 *.DS_Store
 container/Full*.Dockerfile
+**/*~
+**/*.swp

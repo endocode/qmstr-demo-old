@@ -7,9 +7,9 @@ RUN apt-get update && \
     apt-get install -y git maven && \
     rm -rf /var/lib/apt/lists/*
 
-ARG QMSTR_BRANCH=development
-ARG QMSTR_FORK=QMSTR
-RUN git clone -b ${QMSTR_BRANCH} --single-branch https://github.com/${QMSTR_FORK}/qmstr.git /tmp/qmstr
+ARG QMSTR_BRANCH=master
+ARG QMSTR_FORK=https://github.com/QMSTR/qmstr.git
+RUN git clone -b ${QMSTR_BRANCH} --single-branch ${QMSTR_FORK} /tmp/qmstr
 
 WORKDIR /tmp/qmstr
 RUN cd lib/java-qmstr && ./gradlew install
